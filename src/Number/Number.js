@@ -3,8 +3,11 @@ import '../App.scss';
 
 const Number = (props) => {
     return(
-        <div>
-            <h1>{props.name}</h1>
+        <div className="App__item">
+            <div>{props.name}</div>
+            <button className="Num__btn"
+            onClick={props.deleteItemHandler}
+            >x</button>
         </div>
     )
 }

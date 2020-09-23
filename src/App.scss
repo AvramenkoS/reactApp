@@ -1,14 +1,81 @@
 .App {
   text-align: center;
+
+  &__counter {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 auto 10px;
+  }
+
+  &__btn {
+    height: 26px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: no-drop;
+    }
+  }
+  &__item {
+    display: flex;
+    max-width: 400px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.15);
+    position: relative;
+    transition: all .2s linear;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.Num {
+  &__btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 50%;
+    border: none;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .input {
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+
   &:focus {
     outline: none;
   }
+
   &.green {
     border: 2px solid green;
   }
+
   &.red {
     border: 2px solid red;
   }
