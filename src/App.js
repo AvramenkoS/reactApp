@@ -29,23 +29,25 @@ class App extends Component {
 
     renderInputValue = (index) => {
         this.setState({
-            inputValue: ''
+            inputValue: '',
+            count: this.state.count + 1
         })
-        this.setState(({count}) => ({
-            count: count + 1,
-        }));
-        let allArr = [this.state.inputValue, index]
-        this.state.allMess.push(allArr)
-        console.log(this.state.allMess)
+        this.state.allMess.push({
+            value: this.state.inputValue,
+            id: this.state.allMess.length,
+            done: false
+        })
     }
 
     deleteItemHandler = (index) => {
         let allMess = [...this.state.allMess];
-        allMess.filter(item => {
-            console.log(item)
-            // return item.id !== index
+        let mess = allMess.filter(item => {
+            return item.id !== index
         })
-        // this.setState({allMess: mess})
+        this.setState({
+            allMess: mess,
+            count: mess.length
+        })
     }
 
     checkInputStatus = (name1, name2) => {
@@ -67,7 +69,7 @@ class App extends Component {
                        maxLength={this.state.maxCount}
                        onChange={this.changeInputHandle}
                 />
-                <button onClick={this.renderInputValue.bind(this, this.state.count)}
+                <button onClick={this.renderInputValue}
                         disabled={(this.state.inputValue === '')}
                         className="App__btn"
                 >Add new item
@@ -78,8 +80,8 @@ class App extends Component {
                         return (
                             <Number
                                 key={index}
-                                name={this.state.allMess[index]}
-                                // deleteItemHandler={this.deleteItemHandler.bind(this, index)}
+                                name={this.state.allMess[index].value}
+                                deleteItemHandler={this.deleteItemHandler.bind(this, index)}
                             />
                         )
                     })
